@@ -9,7 +9,7 @@ Spyderエディタ
 #####  MEMO                           #####
 #####   F5 to run                     #####
 #####   #%% to create cell            #####
-#####   trl+Enter to run current cell #####
+#####   Ctrl+Enter to run current cell#####
 ###########################################
 
 # numpyをインポート
