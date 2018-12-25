@@ -9,7 +9,9 @@ import pandas as pd
 
 # 四国電力の電力消費量データ読み込み
 ed = [pd.read_csv(
-    'shikoku_electlicity_%d.csv' % year,
+    #'shikoku_electlicity_%d.csv' % year,
+    #'C:/Users/RyusukeTakeuchi/source/repos/PythonStudy/shikoku_electricity_%d.csv' %year,
+    'datas/shikoku_electricity_%d.csv' %year,
     skiprows=3,
     names=['DATE', 'TIME', 'consumption'],
     parse_dates={'date_hour': ['DATE', 'TIME']},
@@ -21,7 +23,7 @@ elec_data = pd.concat(ed)
 
 #気象データ読み込み
 tmp = pd.read_csv(
-    u'47891_高松.csv'
+    u'datas/47891_高松.csv'
     ,parse_dates={'date_hour': ["日時"]}
     ,index_col = "date_hour"
     ,na_values="×"
@@ -43,7 +45,7 @@ tmp.rename(columns=columns, inplace=True)
 
 #データ処理
 #気象データと電力消費量データを一旦統合し、時間軸をあわせた後再分離
-takamatsu = elec_data.join(tmp["tem@erature"]).dropna().as_matrix()
+takamatsu = elec_data.join(tmp["temperature"]).dropna().as_matrix()
 
 takamatsu_elec = takamatsu[:, 0:1]
 takamatsu_wthr = takamatsu[:, 1:]
